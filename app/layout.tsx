@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,36 +12,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.includes("localhost") ? "http" : "https");
-  const origin = `${protocol}://${host}`;
+const localOrigin = "http://localhost:3000";
 
-  return {
-    metadataBase: new URL(origin),
-    title: {
-      default: "DT-Gebäudereinigung",
-      template: "%s | DT-Gebäudereinigung",
-    },
+export const metadata: Metadata = {
+  metadataBase: new URL(localOrigin),
+  title: {
+    default: "DT-Gebäudereinigung",
+    template: "%s | DT-Gebäudereinigung",
+  },
+  description:
+    "Professionelle Reinigung für Privat- und Geschäftskunden – zuverlässig, individuell und persönlich.",
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    siteName: "DT-Gebäudereinigung",
+    title: "Sauberkeit, die man sieht. Qualität, die man spürt.",
     description:
-      "Professionelle Reinigung für Privat- und Geschäftskunden – zuverlässig, individuell und persönlich.",
-    openGraph: {
-      type: "website",
-      locale: "de_DE",
-      siteName: "DT-Gebäudereinigung",
-      title: "Sauberkeit, die man sieht. Qualität, die man spürt.",
-      description: "Persönliche und zuverlässige Reinigungslösungen für Privat- und Geschäftskunden.",
-      images: [{ url: `${origin}/og.png`, width: 1734, height: 907, alt: "DT-Gebäudereinigung" }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "DT-Gebäudereinigung",
-      description: "Persönlich. Zuverlässig. Sauber.",
-      images: [`${origin}/og.png`],
-    },
-  };
-}
+      "Persönliche und zuverlässige Reinigungslösungen für Privat- und Geschäftskunden.",
+    images: [
+      {
+        url: `${localOrigin}/og.png`,
+        width: 1734,
+        height: 907,
+        alt: "DT-Gebäudereinigung",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DT-Gebäudereinigung",
+    description: "Persönlich. Zuverlässig. Sauber.",
+    images: [`${localOrigin}/og.png`],
+  },
+};
 
 export default function RootLayout({
   children,
@@ -50,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
