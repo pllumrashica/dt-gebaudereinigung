@@ -53,7 +53,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} is-preloading`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { BrandLogo } from "./components/BrandLogo";
+import { SiteChrome } from "./components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "Professionelle Gebäudereinigung",
@@ -160,51 +162,10 @@ function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
-function Logo() {
-  return (
-    <a className="logo" href="#start" aria-label="DT-Gebäudereinigung Startseite">
-      <span className="logo-mark" aria-hidden="true">
-        DT
-      </span>
-      <span className="logo-copy">
-        <strong>DT</strong>
-        <span>Gebäudereinigung</span>
-      </span>
-    </a>
-  );
-}
-
 export default function Home() {
   return (
     <main>
-      <header className="site-header">
-        <div className="header-inner shell">
-          <Logo />
-          <nav className="desktop-nav" aria-label="Hauptnavigation">
-            <a href="#start">Startseite</a>
-            <a href="#leistungen">Leistungen</a>
-            <a href="#ueber-uns">Über uns</a>
-            <a href="#ablauf">Ablauf</a>
-            <a href="#kontakt">Kontakt</a>
-          </nav>
-          <a className="button button-small button-dark header-cta" href="#kontakt">
-            Angebot anfordern <Arrow />
-          </a>
-          <details className="mobile-menu">
-            <summary aria-label="Navigation öffnen">
-              <span />
-              <span />
-            </summary>
-            <nav aria-label="Mobile Navigation">
-              <a href="#start">Startseite</a>
-              <a href="#leistungen">Leistungen</a>
-              <a href="#ueber-uns">Über uns</a>
-              <a href="#ablauf">Ablauf</a>
-              <a href="#kontakt">Kontakt</a>
-            </nav>
-          </details>
-        </div>
-      </header>
+      <SiteChrome />
 
       <section className="hero" id="start">
         <div className="hero-orb hero-orb-one" aria-hidden="true" />
@@ -477,7 +438,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="faq section" aria-labelledby="faq-title">
+      <section className="faq section" id="faq" aria-labelledby="faq-title">
         <div className="shell faq-grid">
           <div className="faq-heading">
             <p className="eyebrow eyebrow-dark"><span /> FAQ</p>
@@ -512,7 +473,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="shell footer-grid">
           <div className="footer-brand">
-            <Logo />
+            <BrandLogo className="brand-logo--footer" />
             <p>Professionelle Reinigung für Privat- und Geschäftskunden.</p>
           </div>
           <div>
