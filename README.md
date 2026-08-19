@@ -1,6 +1,6 @@
 # DT-Gebäudereinigung
 
-Lokale Landingpage für DT-Gebäudereinigung auf Basis von Next.js.
+Lokale Mehrseiten-Website für DT-Gebäudereinigung auf Basis von Next.js.
 
 ## Lokal starten
 
@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Die Website ist anschließend unter [http://localhost:3000](http://localhost:3000) erreichbar.
+Die Website ist anschließend unter [http://localhost:3000](http://localhost:3000) erreichbar. Die lokale Basis-URL wird über `NEXT_PUBLIC_SITE_URL` gesetzt und fällt ohne Umgebungsdatei ebenfalls auf diesen Wert zurück.
 
 ## Weitere Befehle
 

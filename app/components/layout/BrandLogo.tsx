@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type BrandLogoProps = {
   className?: string;
@@ -6,11 +7,7 @@ type BrandLogoProps = {
   priority?: boolean;
 };
 
-export function BrandLogo({
-  className = "",
-  linked = true,
-  priority = false,
-}: BrandLogoProps) {
+export function BrandLogo({ className = "", linked = true, priority = false }: BrandLogoProps) {
   const image = (
     <Image
       className="brand-logo-image"
@@ -19,6 +16,7 @@ export function BrandLogo({
       width={1052}
       height={639}
       priority={priority}
+      loading={priority ? "eager" : "lazy"}
       unoptimized
     />
   );
@@ -28,12 +26,8 @@ export function BrandLogo({
   }
 
   return (
-    <a
-      className={`brand-logo ${className}`.trim()}
-      href="#start"
-      aria-label="DT-Gebäudereinigung Startseite"
-    >
+    <Link className={`brand-logo ${className}`.trim()} href="/" aria-label="DT-Gebäudereinigung Startseite">
       {image}
-    </a>
+    </Link>
   );
 }
