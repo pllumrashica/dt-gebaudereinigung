@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   description:
     "Professionelle Reinigung für Privat- und Geschäftskunden – zuverlässig, individuell und persönlich.",
   applicationName: siteName,
+  icons: {
+    icon: "/dt-cleaning-favicon.svg",
+    shortcut: "/dt-cleaning-favicon.svg",
+    apple: "/dt-cleaning-favicon.svg",
+  },
   robots: { index: false, follow: false },
   openGraph: {
     type: "website",
